@@ -3,17 +3,14 @@ import {
   View,
   StyleSheet,
   Image,
-  KeyboardAvoidingView,
-  Platform,
   Keyboard,
+  Platform,
+  KeyboardAvoidingView,
 } from "react-native";
 import * as Yup from "yup";
 
 import Logo from "../assets/Logo.jpeg";
 import { Form, InputText2, Submit } from "../components/form";
-import ErrorLabel from "../components/ErrorLabel";
-import LottieView from "../components/ActivityIndicator";
-import authApi from "../auth/auth";
 
 const schema = Yup.object({
   tellphone: Yup.string()
@@ -24,64 +21,46 @@ const schema = Yup.object({
 
 const LoginScreen = ({ navigation }) => {
   const [login] = useState({ tellphone: "" });
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (values) => {
     Keyboard.dismiss();
 
-    // setLoading(true);
-    // const { data } = await authApi.login(values.tellphone);
-    // setLoading(false);
-
-    // if (data === null) return setError(true);
-
-    // setError(false);
-    navigation.navigate("varification");
+    navigation.navigate("varification", values.tellphone);
   };
 
   return (
     <>
-      <LottieView visible={loading} />
-      <KeyboardAvoidingView
-        behavior="position"
-        style={styles.keyboardOffSet}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : -170}
-      >
-        <View style={styles.container}>
+      <View style={styles.container}>
+        <KeyboardAvoidingView
+          keyboardVerticalOffset={Platform.OS === "ios" ? 85 : -100}
+          behavior="position"
+        >
           <Image source={Logo} style={styles.logo} />
-          <View style={styles.error}>
-            <ErrorLabel
-              touched={error}
-              error="This phone number doesn't exist"
-            />
-          </View>
           <Form
             initialValues={login}
             validationSchema={schema}
             onSubmit={handleSubmit}
           >
-            <InputText2 label="063" name="tellphone" />
+            <InputText2 label="063" name="tellphone" placeholder="64xxxxx" />
             <Submit title="LOGIN" />
           </Form>
-        </View>
-      </KeyboardAvoidingView>
+        </KeyboardAvoidingView>
+      </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     justifyContent: "center",
     paddingHorizontal: 15,
-    marginTop: 340,
   },
   logo: {
     width: 300,
     height: 175,
-    position: "absolute",
-    top: -225,
-    left: 50,
+    alignSelf: "center",
+    marginBottom: 30,
   },
   keyboardOffSet: {
     flex: 1,

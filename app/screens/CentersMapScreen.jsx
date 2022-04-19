@@ -14,7 +14,7 @@ const LONGITUDE = 44.06;
 const LATITUDE_DELTA = 10.43;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-const GOOGLE_MAPS_APIKEY = "AIzaSyDfyN6B8B7PE3yLkrZpa8iyAOeir2ng0N4";
+const GOOGLE_MAPS_APIKEY = "AIzaSyCgVezU2c9-6p86VLnHfqc6zyfRKLBe23w";
 
 class CentersMapScreen extends Component {
   constructor(props) {
@@ -166,6 +166,7 @@ class CentersMapScreen extends Component {
     }
   };
 }
+
 const styles = StyleSheet.create({
   textContainer: {
     backgroundColor: colors["white"],

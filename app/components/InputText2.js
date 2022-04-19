@@ -6,7 +6,9 @@ import colors from "../config/colors";
 const InputText2 = ({ icon, width = "100%", label, ...otherProps }) => {
   return (
     <View style={[styles.container, { width: width }]}>
-      <Text style={styles.code}>{label}</Text>
+      <View style={styles.codeContainer}>
+        <Text style={styles.code}>{label}</Text>
+      </View>
       <TextInput
         style={styles.text}
         {...otherProps}
@@ -36,8 +38,13 @@ const styles = StyleSheet.create({
   },
   code: {
     fontSize: 20,
-    color: colors["lightBlack"],
+    color: colors["medium"],
     marginLeft: 5,
+    paddingRight: 5,
+  },
+  codeContainer: {
+    borderRightWidth: 1,
+    borderRightColor: colors["medium"],
   },
 });
 
