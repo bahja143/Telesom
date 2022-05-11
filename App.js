@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "react-native-gesture-handler";
 
 import Screen from "./app/components/Screen";
 import Navigation from "./app/navigation/Navigation";
